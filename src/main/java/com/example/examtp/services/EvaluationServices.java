@@ -10,7 +10,7 @@ public interface EvaluationServices {
 
     List<EvaluationDto> getEvaluationsByKeyword(String keyword);
 
-    List<EvaluationDto> getMyEvaluations();
+    List<EvaluationDto> getMyEvaluations(String name);
 
     EvaluationDto createEvaluation(CreateEvaluationDto createEvaluationDto);
 
