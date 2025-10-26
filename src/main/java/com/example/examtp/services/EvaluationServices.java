@@ -8,7 +8,7 @@ import java.util.List;
 public interface EvaluationServices {
     List<EvaluationDto> getAllEvaluations();
 
-    List<EvaluationDto> getEvaluationsByKeyword(String keyword);
+    List<EvaluationDto> getEvaluationsByKeyword(String keyword, int maxResults);
 
     List<EvaluationDto> getMyEvaluations(String name);
 
