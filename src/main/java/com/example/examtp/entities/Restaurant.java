@@ -25,6 +25,6 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<Evaluation> evaluations;
 
-    @Column(name = "restaurant_image", length = 500)
+    @Column(name = "restaurant_image_url", length = 500)
     private String restaurantImageUrl;
 }
