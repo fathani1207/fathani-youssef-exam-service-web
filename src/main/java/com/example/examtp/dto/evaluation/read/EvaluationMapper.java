@@ -3,7 +3,7 @@ package com.example.examtp.dto.evaluation.read;
 import com.example.examtp.entities.Evaluation;
 import org.mapstruct.*;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, uses = {RestaurantMapper.class})
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface EvaluationMapper {
     Evaluation toEntity(EvaluationDto evaluationDto);
 
