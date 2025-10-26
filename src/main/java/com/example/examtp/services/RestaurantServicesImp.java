@@ -11,6 +11,7 @@ import com.example.examtp.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -51,11 +52,17 @@ public class RestaurantServicesImp implements RestaurantServices {
 
     @Override
     public RestaurantDto createRestaurant(CreateRestaurantDto createRestaurantDto) {
-        return null;
+        Restaurant restaurant = createRestaurantMapper.toEntity(createRestaurantDto);
+        MultipartFile file = createRestaurantDto.restaurantImage();
+        restaurant.setRestaurantImageUrl(this.uploadService.uploadRestaurantImage(file));
+        return this.restaurantMapper.toDto(this.restaurantRepository.save(restaurant));
     }
 
     @Override
     public RestaurantDto updateRestaurant(Long id, UpdateRestaurantDto updateRestaurantDto) {
-        return null;
+        Restaurant restaurant = this.restaurantRepository.findById(id).orElseThrow(() -> new AppException("Restaurant not found", HttpStatus.NOT_FOUND));
+        restaurant.setName(updateRestaurantDto.name());
+        restaurant.setAddress(updateRestaurantDto.address());
+        return this.restaurantMapper.toDto(this.restaurantRepository.save(restaurant));
     }
 }
