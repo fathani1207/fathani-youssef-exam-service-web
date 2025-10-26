@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * DTO for {@link com.example.examtp.entities.Evaluation}
  */
-public record CreateEvaluationDto(@Size(min = 5, max = 50) @NotBlank String author, @Size(max = 255) @NotBlank String content, @Positive @Range(min = 0, max = 3) int note,
+public record CreateEvaluationDto(@Size(min = 5, max = 50) @NotBlank String author, @Size(max = 255) @NotBlank String content,
+                                  @Positive @Range(min = 0, max = 3) int note, @Positive long restaurantId,
                                   List<MultipartFile> evaluationImages) implements Serializable {
 }
