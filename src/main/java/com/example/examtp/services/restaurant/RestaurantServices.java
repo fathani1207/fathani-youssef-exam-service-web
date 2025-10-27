@@ -1,4 +1,4 @@
-package com.example.examtp.services;
+package com.example.examtp.services.restaurant;
 
 import com.example.examtp.dto.restaurant.create.CreateRestaurantDto;
 import com.example.examtp.dto.restaurant.read.RestaurantDto;

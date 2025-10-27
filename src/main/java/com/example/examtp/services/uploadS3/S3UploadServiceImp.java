@@ -1,4 +1,4 @@
-package com.example.examtp.services;
+package com.example.examtp.services.uploadS3;
 
 import com.example.examtp.exceptions.AppException;
 import io.minio.*;

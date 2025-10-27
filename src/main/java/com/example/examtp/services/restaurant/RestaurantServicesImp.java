@@ -1,4 +1,4 @@
-package com.example.examtp.services;
+package com.example.examtp.services.restaurant;
 
 import com.example.examtp.dto.restaurant.create.CreateRestaurantDto;
 import com.example.examtp.dto.restaurant.create.CreateRestaurantMapper;
@@ -8,6 +8,7 @@ import com.example.examtp.dto.restaurant.update.UpdateRestaurantDto;
 import com.example.examtp.entities.Restaurant;
 import com.example.examtp.exceptions.AppException;
 import com.example.examtp.repositories.RestaurantRepository;
+import com.example.examtp.services.uploadS3.S3UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

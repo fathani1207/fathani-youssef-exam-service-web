@@ -1,4 +1,4 @@
-package com.example.examtp.services;
+package com.example.examtp.services.evaluation;
 
 import com.example.examtp.dto.evaluation.read.EvaluationDto;
 import jakarta.annotation.PostConstruct;
