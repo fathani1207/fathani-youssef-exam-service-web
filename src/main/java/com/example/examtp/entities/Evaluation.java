@@ -30,7 +30,12 @@ public class Evaluation {
     @Column(name = "evaluation_image_url", length = 500)
     private List<String> evaluationImagesUrls;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade =  {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+        restaurant.addEvaluation(this);
+    }
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.ArrayList;
 
 
 @Entity
@@ -25,6 +26,23 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<Evaluation> evaluations;
 
+    @Column(name = "average_rating", columnDefinition = "FLOAT DEFAULT -1")
+    private double averageRating;
+
     @Column(name = "restaurant_image_url", length = 500)
     private String restaurantImageUrl;
+
+    public void addEvaluation(Evaluation evaluation) {
+        if (evaluations == null) {
+            evaluations = new ArrayList<>();
+        }
+        this.evaluations.add(evaluation);
+
+        double average = evaluations.stream()
+                .mapToDouble(Evaluation::getNote)
+                .average()
+                .orElse(-1);
+
+        setAverageRating(average);
+    }
 }

@@ -1,7 +1,5 @@
 package com.example.examtp.dto.restaurant.read;
 
-import com.example.examtp.dto.evaluation.read.EvaluationDto;
-
 import java.io.Serializable;
 import java.util.List;
 

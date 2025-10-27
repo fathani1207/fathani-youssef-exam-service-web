@@ -54,7 +54,9 @@ public class RestaurantServicesImp implements RestaurantServices {
     public RestaurantDto createRestaurant(CreateRestaurantDto createRestaurantDto) {
         Restaurant restaurant = createRestaurantMapper.toEntity(createRestaurantDto);
         MultipartFile file = createRestaurantDto.restaurantImage();
-        restaurant.setRestaurantImageUrl(this.uploadService.uploadRestaurantImage(file));
+        if (file != null) {
+            restaurant.setRestaurantImageUrl(this.uploadService.uploadRestaurantImage(file));
+        }
         return this.restaurantMapper.toDto(this.restaurantRepository.save(restaurant));
     }
 
@@ -64,5 +66,17 @@ public class RestaurantServicesImp implements RestaurantServices {
         restaurant.setName(updateRestaurantDto.name());
         restaurant.setAddress(updateRestaurantDto.address());
         return this.restaurantMapper.toDto(this.restaurantRepository.save(restaurant));
+    }
+
+    public double calculateAverageRating(Long restaurantId) {
+        Restaurant restaurant = this.restaurantRepository.findById(restaurantId).orElseThrow(() -> new AppException("Restaurant not found", HttpStatus.NOT_FOUND));
+        if (!restaurant.getEvaluations().isEmpty()) {
+            double sum = 0;
+            for (var eval : restaurant.getEvaluations()) {
+                sum += eval.getNote();
+            }
+            return sum / restaurant.getEvaluations().size();
+        }
+        return -1;
     }
 }

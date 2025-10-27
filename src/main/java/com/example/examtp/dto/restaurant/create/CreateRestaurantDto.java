@@ -12,5 +12,5 @@ import java.io.Serializable;
  */
 public record CreateRestaurantDto(@Size(min = 5, max = 90) @NotBlank String name,
                                   @Size(min = 15, max = 255) @NotBlank String address,
-                                  @NotNull MultipartFile restaurantImage) implements Serializable {
+                                  MultipartFile restaurantImage) implements Serializable {
 }

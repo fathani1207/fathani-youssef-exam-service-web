@@ -67,7 +67,7 @@ public class EvaluationServicesImp implements EvaluationServices{
             evaluation.setEvaluationImagesUrls(evaluationImageUrls);
         }
         evaluation = this.evaluationRepository.save(evaluation);
-        this.evaluationSearchService.indexEvaluation(evaluation.getId(), evaluation.getAuthor(), evaluation.getContent(), evaluation.getNote(), evaluation.getEvaluationImagesUrls(), restaurant.getId());
+        this.evaluationSearchService.indexEvaluation(evaluation.getId(), evaluation.getAuthor(), evaluation.getContent(), evaluation.getNote(), evaluation.getEvaluationImagesUrls(), restaurant.getName());
         return this.evaluationMapper.toDto(evaluation);
     }
 

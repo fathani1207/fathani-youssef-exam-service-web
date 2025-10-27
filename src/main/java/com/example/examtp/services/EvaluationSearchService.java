@@ -82,7 +82,7 @@ public class EvaluationSearchService {
      * Index an evaluation for searching
      */
     public void indexEvaluation(long id, String author, String content, int note,
-                                List<String> evaluationImagesUrls, Long restaurantId) {
+                                List<String> evaluationImagesUrls, String restaurantName) {
         try {
             // Delete existing document if it exists (for updates)
             indexWriter.deleteDocuments(new Term("id", String.valueOf(id)));
@@ -101,12 +101,6 @@ public class EvaluationSearchService {
             doc.add(new IntPoint("note", note));
             doc.add(new StoredField("note", note));
 
-            // Restaurant ID for filtering by restaurant
-            if (restaurantId != null) {
-                doc.add(new LongPoint("restaurantId", restaurantId));
-                doc.add(new StoredField("restaurantId", restaurantId));
-            }
-
             // Store image URLs as comma-separated string
             if (evaluationImagesUrls != null && !evaluationImagesUrls.isEmpty()) {
                 String imagesStr = String.join(",", evaluationImagesUrls);
@@ -114,6 +108,9 @@ public class EvaluationSearchService {
             } else {
                 doc.add(new StringField("evaluationImagesUrls", "", Field.Store.YES));
             }
+
+            doc.add(new TextField("restaurantName", restaurantName == null ? "" : restaurantName, Field.Store.YES));
+
 
             indexWriter.addDocument(doc);
             indexWriter.commit();
@@ -152,14 +149,17 @@ public class EvaluationSearchService {
 
             QueryParser authorParser = new QueryParser("author", analyzer);
             QueryParser contentParser = new QueryParser("content", analyzer);
+            QueryParser restaurantParser = new QueryParser("restaurantName", analyzer);
 
             Query authorQuery = authorParser.parse(escapedKeyword);
             Query contentQuery = contentParser.parse(escapedKeyword);
+            Query restaurantQuery = restaurantParser.parse(escapedKeyword);
 
             // Search in both author and content
             BooleanQuery.Builder builder = new BooleanQuery.Builder();
             builder.add(authorQuery, BooleanClause.Occur.SHOULD);
             builder.add(contentQuery, BooleanClause.Occur.SHOULD);
+            builder.add(restaurantQuery, BooleanClause.Occur.SHOULD);
 
             Query combinedQuery = builder.build();
 
@@ -182,13 +182,13 @@ public class EvaluationSearchService {
             String author = doc.get("author");
             String content = doc.get("content");
             int note = doc.getField("note").numericValue().intValue();
-
+            String restaurantName = doc.get("restaurantName");
             String imagesStr = doc.get("evaluationImagesUrls");
             List<String> imageUrls = imagesStr != null && !imagesStr.isEmpty()
                     ? Arrays.asList(imagesStr.split(","))
                     : new ArrayList<>();
 
-            results.add(new EvaluationDto(author, content, note, imageUrls));
+            results.add(new EvaluationDto(author, content, note, imageUrls, restaurantName));
         }
 
         log.debug("Found {} evaluation results", results.size());

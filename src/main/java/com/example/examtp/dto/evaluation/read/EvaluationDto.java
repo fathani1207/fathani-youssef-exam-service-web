@@ -6,5 +6,6 @@ import java.util.List;
 /**
  * DTO for {@link com.example.examtp.entities.Evaluation}
  */
-public record EvaluationDto(String author, String content, int note, List<String> evaluationImagesUrls) implements Serializable {
+public record EvaluationDto(String author, String content, int note, List<String> evaluationImagesUrls,
+                            String restaurantName) implements Serializable {
 }
