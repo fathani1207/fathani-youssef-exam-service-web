@@ -12,17 +12,12 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.security.web.SecurityFilterChain;
 
-import java.util.Optional;
 
 @Configuration
 @EnableMethodSecurity
-@EnableWebSecurity
 public class SecurityConfig {
 
     @Value("${keycloak.client-id}")
@@ -54,10 +49,10 @@ public class SecurityConfig {
                         ).permitAll()
 
                         // permit login and registration endpoints
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
 
                         // permit restaurant GET endpoints
-                        .requestMatchers(HttpMethod.GET, "/restaurants", "/restaurants/**", "/restaurants/name/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "api/restaurants", "api/restaurants/**", "api/restaurants/name/**").permitAll()
 
                         .anyRequest().authenticated()
                 )
@@ -71,7 +66,7 @@ public class SecurityConfig {
 
                 // Disable CSRF for H2 console and API endpoints
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**", "/api/**")
+                        .ignoringRequestMatchers("/h2-console/**", "/api/**", "/auth/**")
                 )
 
                 // Allow frames for H2 console

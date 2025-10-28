@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/evaluations")
-@SecurityRequirement(name = "bearerAuth")
+@RequestMapping("/api/evaluations")
 public class EvaluationController {
     private final EvaluationServices evaluationServices;
     private final JwtExtractorService jwtExtractorService;

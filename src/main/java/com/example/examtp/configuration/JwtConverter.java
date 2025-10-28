@@ -20,16 +20,6 @@ public class JwtConverter implements Converter<Jwt, Collection<GrantedAuthority>
     public Collection<GrantedAuthority> convert(Jwt jwt) {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
 
-        /*// Extract realm roles
-        Map<String, Object> realmAccess = jwt.getClaimAsMap("realm_access");
-        if (realmAccess != null && realmAccess.containsKey("roles")) {
-            List<String> realmRoles = (List<String>) realmAccess.get("roles");
-            authorities.addAll(realmRoles.stream()
-                    .map(role -> new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()))
-                    .collect(Collectors.toList()));
-        }*/
-
-        // Extract client roles (resource_access -> your-client-id -> roles)
         Map<String, Object> resourceAccess = jwt.getClaimAsMap("resource_access");
         if (resourceAccess != null && resourceAccess.containsKey(clientId)) {
             Map<String, Object> clientAccess = (Map<String, Object>) resourceAccess.get(clientId);

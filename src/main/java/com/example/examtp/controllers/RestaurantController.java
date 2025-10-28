@@ -6,22 +6,19 @@ import com.example.examtp.dto.restaurant.read.RestaurantDto;
 import com.example.examtp.dto.restaurant.update.UpdateRestaurantDto;
 import com.example.examtp.services.restaurant.RestaurantServices;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/restaurants")
-@SecurityRequirement(name = "bearerAuth")
+@RequestMapping("/api/restaurants")
 public class RestaurantController {
     private final RestaurantServices restaurantServices;
 
@@ -31,7 +28,6 @@ public class RestaurantController {
     }
 
     @GetMapping
-    @PermitAll
     public List<RestaurantDto> getRestaurants() {
         return this.restaurantServices.getAllRestaurants();
     }
