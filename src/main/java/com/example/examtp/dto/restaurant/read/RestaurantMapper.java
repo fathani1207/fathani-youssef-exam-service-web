@@ -1,5 +1,6 @@
 package com.example.examtp.dto.restaurant.read;
 
+import com.example.examtp.dto.evaluation.read.EvaluationMapper;
 import com.example.examtp.entities.Restaurant;
 import org.mapstruct.*;
 

@@ -50,10 +50,7 @@ public class EvaluationServicesImp implements EvaluationServices{
 
     @Override
     public List<EvaluationDto> getMyEvaluations(String name) {
-        List<Evaluation> evaluations = this.evaluationRepository.findByAuthor(name);
-        if (evaluations.isEmpty()){
-            throw new AppException("No evaluations found for the given author", HttpStatus.NOT_FOUND);
-        }
+        List<Evaluation> evaluations = this.evaluationRepository.findByAuthor(name).orElseThrow(()->new AppException("No evaluations found for the given author", HttpStatus.NOT_FOUND));
         return evaluations.stream().map(this.evaluationMapper::toDto).toList();
     }
 
@@ -80,5 +77,12 @@ public class EvaluationServicesImp implements EvaluationServices{
         } else {
             throw new AppException("Evaluation not found", HttpStatus.NOT_FOUND);
         }
+    }
+
+    @Override
+    public void deleteMyEvaluation(long id, String name) {
+        Evaluation evaluation = this.evaluationRepository.findByAuthorAndId(name, id).orElseThrow(()->new AppException("Evaluation not found for the given author and id", HttpStatus.NOT_FOUND));
+        this.evaluationRepository.delete(evaluation);
+        this.evaluationSearchService.deleteEvaluation(id);
     }
 }

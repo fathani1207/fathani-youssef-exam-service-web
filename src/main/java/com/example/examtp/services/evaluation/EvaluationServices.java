@@ -15,4 +15,6 @@ public interface EvaluationServices {
     EvaluationDto createEvaluation(CreateEvaluationDto createEvaluationDto);
 
     void deleteEvaluation(Long evaluationId);
+
+    void deleteMyEvaluation(long id, String name);
 }
