@@ -31,7 +31,7 @@ L’application a été développée avec **Spring Boot (Java 21)** et repose su
 
 #### 🚨🚨🚨 Pour utiliser l'ensemble des fonctionnalités, la creation d'un fichier `secret.properties` dans le dossier `src/main/resources` est nécessaire pour la configuration d Keycloak et Minio S3 Bucket
 #### si vous avez besoin de contenu de ce fichier, n'hésitez pas à me le demander en m'envoyant un mail sur mon adresse email : **youssef.fathani1207@gmail.com**.
-
+#### pour des raisons d'evaluation de travail, j'ai mis des valeurs par défaut dans le code source.
 
 ### Restaurants
 - ➕ Création d’un restaurant (réservé aux administrateurs)  
