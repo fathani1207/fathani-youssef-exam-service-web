@@ -1,0 +1,126 @@
+commit dba18d3ef9105369225be99232c0b744ac52a433 (HEAD -> main, origin/main)
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Tue Oct 28 17:56:35 2025 +0100
+
+    implementation de service et controlleur d'autentification avec la re configuraion de securite
+
+commit 505135f94ddff94a392c469337c44a50e3cf107f
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Tue Oct 28 16:50:40 2025 +0100
+
+    configuration de securite
+
+:...skipping...
+commit dba18d3ef9105369225be99232c0b744ac52a433 (HEAD -> main, origin/main)
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Tue Oct 28 17:56:35 2025 +0100
+
+    implementation de service et controlleur d'autentification avec la re configuraion de securite
+
+commit 505135f94ddff94a392c469337c44a50e3cf107f
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Tue Oct 28 16:50:40 2025 +0100
+
+    configuration de securite
+
+commit 7610df14f795e118dcb046c325d98b46198031ae
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Tue Oct 28 16:50:10 2025 +0100
+
+    configuration de securite
+
+commit 4537094a65bf0409745aeb2b9252835085faf6f4
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Mon Oct 27 20:02:06 2025 +0100
+
+    re structure the services
+
+commit a1f644eb6b6538018554edf743b4dae988cc3127
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Mon Oct 27 19:39:21 2025 +0100
+
+    implementation des controlleurs de restaurant et d'evaluation
+
+commit 447edd2f5eca43cbdbc55266be3a382f2f827a85
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 23:37:56 2025 +0100
+
+    initialisation de la configuration de securite et la creation des controlleurs vides
+
+commit 2c3704e3b6d2f21aa80d9c12712074a0de574a99
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 07:06:40 2025 +0100
+
+    implementation de service d'indexation et l'utiliser dans le service d'evaluation
+
+commit e70a6fe2a6d2a1a3ace810d84b3d6959b875b521
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 05:16:13 2025 +0100
+
+    implementation de service evaluation
+
+commit 21e4be3d8e33443750e7c7b612c2edad1d592cf9
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 04:39:02 2025 +0100
+
+    implementation de service restaurant
+
+commit f13069ddd1b429922b527f92ab766466cb02a13e
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 04:16:35 2025 +0100
+
+    debut d'implementation des services avec la creation de service de upload les images sans implementation
+
+commit de652885ba263304cde01e8a81df685dcf358d1d
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 03:39:47 2025 +0100
+
+    creation d'une exception de gestion de erreurs
+
+commit 073a7ab590ddd7c2b37fb35969816f0b070e8e76
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 03:34:03 2025 +0100
+
+    creation des services sans les implementer
+
+commit 5928b837037b2ef106d5cc6910b6190ad0daabaa
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 03:32:49 2025 +0100
+
+    creation des repositories
+
+commit 8e4f2069d53928a9917afdf0e8aedefb5049a921
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 03:31:22 2025 +0100
+
+    re configuration des secrets et creation des dto
+
+commit 0e57bea9a32381ac0c2ee3b776938c6f29fbc111
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 02:01:29 2025 +0100
+
+    creation des variables d'environnement
+
+commit 02a759535453b839cf637e3ae5360bac26a3e962
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 02:58:10 2025 +0200
+
+    creation des variables d'environnement
+
+commit 5f95fd5dfd1390a349f0fcec26953ed9e68695b7
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 02:45:03 2025 +0200
+
+    creation des entites
+
+commit 1779de662886e1658b440bd1d17d7190e7610ecd
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sun Oct 26 02:19:13 2025 +0200
+
+    configuration de pom et des proprietes d'application
+
+commit 588d3c4eb2bc4ffed62f199a875317a313f91e4a
+Author: fathani1207 <youssef.fathani1207@gmail.com>
+Date:   Sat Oct 25 22:00:29 2025 +0200
+
+    initialisation de projet

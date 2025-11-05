@@ -55,11 +55,12 @@ public class EvaluationServicesImp implements EvaluationServices{
     }
 
     @Override
-    public EvaluationDto createEvaluation(CreateEvaluationDto createEvaluationDto) {
+    public EvaluationDto createEvaluation(CreateEvaluationDto createEvaluationDto, String username) {
         Evaluation evaluation = createEvaluationMapper.toEntity(createEvaluationDto);
+        evaluation.setAuthor(username);
         Restaurant restaurant = restaurantRepository.findById(createEvaluationDto.restaurantId()).orElseThrow(()->new AppException("Restaurant not found", HttpStatus.NOT_FOUND));
         evaluation.setRestaurant(restaurant);
-        List<MultipartFile> files = createEvaluationDto.evaluationImages();
+        List<MultipartFile> files = createEvaluationDto.evaluationImages() != null ? createEvaluationDto.evaluationImages() : List.of();
         if (!files.isEmpty()){
             List<String> evaluationImageUrls = files.stream().map(this.uploadService::uploadEvaluationImage).toList();
             evaluation.setEvaluationImagesUrls(evaluationImageUrls);

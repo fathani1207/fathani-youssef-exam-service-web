@@ -2,6 +2,7 @@ package com.example.examtp.services.evaluation;
 
 import com.example.examtp.dto.evaluation.create.CreateEvaluationDto;
 import com.example.examtp.dto.evaluation.read.EvaluationDto;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface EvaluationServices {
 
     List<EvaluationDto> getMyEvaluations(String name);
 
-    EvaluationDto createEvaluation(CreateEvaluationDto createEvaluationDto);
+    EvaluationDto createEvaluation(CreateEvaluationDto createEvaluationDto, String username);
 
     void deleteEvaluation(Long evaluationId);
 

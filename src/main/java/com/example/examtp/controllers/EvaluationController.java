@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -48,8 +49,9 @@ public class EvaluationController {
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public ResponseEntity<EvaluationDto> createEvaluation(@Valid @ModelAttribute CreateEvaluationDto evaluationDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(this.evaluationServices.createEvaluation(evaluationDto));
+    public ResponseEntity<EvaluationDto> createEvaluation(@Valid @ModelAttribute CreateEvaluationDto evaluationDto, Authentication principal) {
+        String username = jwtExtractorService.getPreferredUsername(principal);
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.evaluationServices.createEvaluation(evaluationDto, username));
     }
 
     @DeleteMapping("/{id}")
