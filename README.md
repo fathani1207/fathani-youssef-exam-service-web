@@ -1,5 +1,7 @@
 # 🍽️ API de Gestion des Restaurants – Projet Backend Spring Boot
 
+## Réalisé par Youssef Fathani
+
 ## 📘 Description du projet
 
 Ce projet a été réalisé dans le cadre de l’examen **Backend de la formation Web Services**.  
